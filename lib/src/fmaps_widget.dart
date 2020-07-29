@@ -16,7 +16,10 @@ class FMaps extends StatelessWidget {
   final MapProvider provider;
   final MapOptions options;
 
-  const FMaps(this.options, this.provider);
+  const FMaps({
+    this.provider,
+    @required this.options,
+  });
 
   @override
   Widget build(BuildContext context) {
