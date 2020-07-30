@@ -35,6 +35,9 @@ class MapOptions {
         assert(area == null || (area != null && area.length == 2),
             "When using area as map's position area must be a size 2 list of LatLng!");
 
+  /// Returns true if the position is represented as center and zoom.
   bool get isCenter => center != null && zoom != null;
+
+  /// Returns true if the position is represented as area.
   bool get isArea => area != null;
 }
