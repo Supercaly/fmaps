@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
+import '../latlng.dart';
 import '../map_options.dart';
+import '../marker.dart';
 import 'map_provider.dart';
 
 /// Implementation of [MapProvider] for the Geoapify service.
@@ -19,28 +20,36 @@ class GeoapifyMapProvider extends MapProvider {
 
     // Add the position as area or center/zoom
     if (options.isCenter) {
-      params["center"] =
-          "lonlat:${options.center.longitude},${options.center.latitude}";
+      params["center"] = _getCenterString(options.center);
       params["zoom"] = options.zoom.toString();
     } else
-      params["area"] =
-          "rect:${options.area[0].longitude},${options.area[0].latitude},${options.area[1].longitude},${options.area[1].latitude}";
+      params["area"] = _getAreaString(options.area);
 
     // Add the markers
-    if (options.markers != null && options.markers.isNotEmpty) {
-      List<String> markersStrings = [];
-      for (var m in options.markers) {
-        markersStrings
-            .add("lonlat:${m.position.longitude},${m.position.latitude}");
-      }
-      print(markersStrings);
-      params["marker"] = markersStrings.join("|");
-    }
+    if (options.markers != null && options.markers.isNotEmpty)
+      params["marker"] = _getMarkersString(options.markers);
 
     final uri = Uri.https("maps.geoapify.com", "/v1/staticmap", params);
     print('GeoapifyMapProvider.getStaticMap: query url=$uri');
     return NetworkImage(uri.toString());
   }
+
+  /// Returns the string parameter for the center
+  String _getCenterString(LatLng c) => "lonlat:${c.longitude},${c.latitude}";
+
+  /// Returns the string parameter for the area
+  String _getAreaString(List<LatLng> a) =>
+      "rect:${a[0].longitude},${a[0].latitude},${a[1].longitude},${a[1].latitude}";
+
+  /// Returns the string parameter for all the markers
+  String _getMarkersString(List<Marker> m) => m
+      .map((e) {
+        String ret = "lonlat:${e.position.longitude},${e.position.latitude}";
+        if (e.color != null)
+            ret += ";color:#${(e.color.value & 0XFFFFFF).toRadixString(16).padLeft(6, '0').toLowerCase()}";
+        return ret;
+      })
+      .join("|");
 }
 
 //class ThunderforestMapProvider extends MapProvider {
