@@ -11,13 +11,17 @@ class Map1Screen extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: Column(children: [
-            FMaps(
-              options: MapOptions(
-                center: LatLng(43.840964, 12.412731),
-                zoom: 17.0,
-                placeholder: NetworkImage(placeholderUrl),
+            Container(
+              color: Colors.red,
+              child: FMaps(
+                options: MapOptions(
+                  center: LatLng(43.840964, 12.412731),
+                  zoom: 17.0,
+                  placeholder: NetworkImage(placeholderUrl),
+                ),
+                provider: GeoapifyMapProvider(
+                    apiKey: "ef924a4dd7464d58a1f295e9e7efafbd"),
               ),
-              provider: GeoapifyMapProvider(),
             ),
           ]),
         ),

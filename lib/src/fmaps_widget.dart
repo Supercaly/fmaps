@@ -7,7 +7,7 @@ import 'package:fmaps/src/map_provider.dart';
 /// The Map can be customized passing [options].
 ///
 /// When created this widget has the same size of
-/// his parent; if parent's width or height is Infinite,
+/// his parent; if parent's width or height is Infinity,
 /// NaN of Negative it will use the default values.
 class FMaps extends StatelessWidget {
   static const int _defaultWidth = 600;
@@ -26,17 +26,22 @@ class FMaps extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         print('FMaps.build: Parent constraints=$constraints');
-        final parentWidth =
+        /*
+         * Assign the map height and width depending on the parent's
+         * constraints; if one of the constraints is Infinity, NaN
+         * or Negative use the default value instead.
+         */
+        final mapWidth =
             (constraints.maxWidth.isFinite && !constraints.maxWidth.isNegative)
                 ? constraints.maxWidth.floor()
                 : _defaultWidth;
-        final parentHeight = (constraints.maxHeight.isFinite &&
+        final mapHeight = (constraints.maxHeight.isFinite &&
                 !constraints.maxHeight.isNegative)
             ? constraints.maxHeight.floor()
             : _defaultHeight;
         return FadeInImage(
           placeholder: options.placeholder,
-          image: provider.getStaticMap(parentWidth, parentHeight, options),
+          image: provider.getStaticMap(mapWidth, mapHeight, options),
           fit: BoxFit.fill,
         );
       },
