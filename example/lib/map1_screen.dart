@@ -20,6 +20,7 @@ class Map1Screen extends StatelessWidget {
                   markers: [
                     Marker(
                       position: LatLng(43.840964, 12.412731),
+                      color: Colors.green,
                     ),
                   ],
                   placeholder: NetworkImage(placeholderUrl),
