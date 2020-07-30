@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'map_options.dart';
-import 'map_provider.dart';
+import '../map_options.dart';
+import '../map_provider.dart';
 
 /// Implementation of [MapProvider] for the Geoapify service.
 class GeoapifyMapProvider extends MapProvider {
