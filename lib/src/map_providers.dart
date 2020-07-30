@@ -7,25 +7,24 @@ class GeoapifyMapProvider extends MapProvider {
 
   @override
   ImageProvider getStaticMap(int width, int height, MapOptions opt) {
-    final baseUrl = "https://maps.geoapify.com/v1/staticmap?";
-    final headers = {
+    // Define the query params based on the given options
+    final params = {
       "style": "osm-carto",
       "width": width.toString(),
       "height": height.toString(),
+      "apiKey": apiKey,
     };
     if (opt.isCenter) {
-      headers["center"] = "lonlat:${opt.center.longitude},${opt.center.latitude}";
-      headers["zoom"] = opt.zoom.toString();
+      params["center"] =
+          "lonlat:${opt.center.longitude},${opt.center.latitude}";
+      params["zoom"] = opt.zoom.toString();
     } else
-      headers["area"] = "rect:${opt.area[0].longitude},${opt.area[0].latitude},${opt.area[1].longitude},${opt.area[1].latitude}";
-    headers["apiKey"] = apiKey;
-    print(headers);
-    String finalString = baseUrl;
-    for(var e in headers.entries) {
-      finalString += "${e.key}=${e.value}&";
-    }
-    print(finalString);
-    return NetworkImage(finalString);
+      params["area"] =
+          "rect:${opt.area[0].longitude},${opt.area[0].latitude},${opt.area[1].longitude},${opt.area[1].latitude}";
+
+    final uri = Uri.https("maps.geoapify.com", "/v1/staticmap", params);
+    print('GeoapifyMapProvider.getStaticMap: query url=$uri');
+    return NetworkImage(uri.toString());
   }
 }
 
