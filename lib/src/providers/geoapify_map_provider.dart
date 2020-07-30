@@ -42,18 +42,11 @@ class GeoapifyMapProvider extends MapProvider {
       "rect:${a[0].longitude},${a[0].latitude},${a[1].longitude},${a[1].latitude}";
 
   /// Returns the string parameter for all the markers
-  String _getMarkersString(List<Marker> m) => m
-      .map((e) {
+  String _getMarkersString(List<Marker> m) => m.map((e) {
         String ret = "lonlat:${e.position.longitude},${e.position.latitude}";
         if (e.color != null)
-            ret += ";color:#${(e.color.value & 0XFFFFFF).toRadixString(16).padLeft(6, '0').toLowerCase()}";
+          ret +=
+              ";color:#${(e.color.value & 0XFFFFFF).toRadixString(16).padLeft(6, '0').toLowerCase()}";
         return ret;
-      })
-      .join("|");
+      }).join("|");
 }
-
-//class ThunderforestMapProvider extends MapProvider {
-//  @override
-//  ImageProvider getStaticMap(MapOptions opt) {
-//  }
-//}
