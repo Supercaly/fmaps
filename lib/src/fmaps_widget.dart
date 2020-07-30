@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fmaps/src/map_options.dart';
-import 'package:fmaps/src/map_provider.dart';
+import 'map_options.dart';
+import 'providers/map_provider.dart';
 
 /// Widget that shows to the screen a map
 /// obtained by [provider].

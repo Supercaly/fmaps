@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'map_options.dart';
+
+import '../map_options.dart';
 
 /// Abstract class representing a map provider.
 ///
