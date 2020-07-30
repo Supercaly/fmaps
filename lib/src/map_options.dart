@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'marker.dart';
 import 'latlng.dart';
 
 /// Represent a set of options used to
@@ -19,6 +20,9 @@ class MapOptions {
   /// His value must be in range [1,20].
   final double zoom;
 
+  /// List of [Marker]s for the map
+  final List<Marker> markers;
+
   /// Defines an image used as placeholder while the map
   /// is downloaded form the web.
   final ImageProvider placeholder;
@@ -27,6 +31,7 @@ class MapOptions {
     this.area,
     this.center,
     this.zoom,
+    this.markers,
     this.placeholder,
   })  : assert(
             (center == null && zoom == null && area != null) ||

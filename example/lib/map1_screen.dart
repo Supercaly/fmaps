@@ -17,15 +17,15 @@ class Map1Screen extends StatelessWidget {
                 options: MapOptions(
                   center: LatLng(43.840964, 12.412731),
                   zoom: 17.0,
+                  markers: [
+                    Marker(
+                      position: LatLng(43.840964, 12.412731),
+                    ),
+                  ],
                   placeholder: NetworkImage(placeholderUrl),
                 ),
                 provider: GeoapifyMapProvider(
                     apiKey: "ef924a4dd7464d58a1f295e9e7efafbd"),
-                markers: [
-                  Marker(
-                    position: LatLng(43.840964, 12.412731),
-                  ),
-                ]
               ),
             ),
           ]),

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import '../map_options.dart';
-import '../marker.dart';
 
 /// Abstract class representing a map provider.
 ///
@@ -34,6 +32,5 @@ abstract class MapProvider {
   const MapProvider({this.apiKey});
 
   /// Returns an [ImageProvider] with the static map.
-  ImageProvider getStaticMap(
-      int width, int height, MapOptions opt, List<Marker> markers);
+  ImageProvider getStaticMap(int width, int height, MapOptions options);
 }

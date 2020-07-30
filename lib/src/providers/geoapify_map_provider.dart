@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../map_options.dart';
-import '../marker.dart';
 import 'map_provider.dart';
 
 /// Implementation of [MapProvider] for the Geoapify service.
@@ -9,7 +8,7 @@ class GeoapifyMapProvider extends MapProvider {
   GeoapifyMapProvider({String apiKey}) : super(apiKey: apiKey);
 
   @override
-  ImageProvider getStaticMap(int width, int height, MapOptions opt, List<Marker> markers) {
+  ImageProvider getStaticMap(int width, int height, MapOptions options) {
     // Define the query params based on the given options
     final params = {
       "style": "osm-carto",
@@ -17,19 +16,22 @@ class GeoapifyMapProvider extends MapProvider {
       "height": height.toString(),
       "apiKey": apiKey,
     };
-    if (opt.isCenter) {
+
+    // Add the position as area or center/zoom
+    if (options.isCenter) {
       params["center"] =
-          "lonlat:${opt.center.longitude},${opt.center.latitude}";
-      params["zoom"] = opt.zoom.toString();
+          "lonlat:${options.center.longitude},${options.center.latitude}";
+      params["zoom"] = options.zoom.toString();
     } else
       params["area"] =
-          "rect:${opt.area[0].longitude},${opt.area[0].latitude},${opt.area[1].longitude},${opt.area[1].latitude}";
+          "rect:${options.area[0].longitude},${options.area[0].latitude},${options.area[1].longitude},${options.area[1].latitude}";
 
-    if (markers != null && markers.isNotEmpty) {
+    // Add the markers
+    if (options.markers != null && options.markers.isNotEmpty) {
       List<String> markersStrings = [];
-      for (var m in markers) {
-        markersStrings.add("lonlat:${m.position.longitude},${m.position
-            .latitude}");
+      for (var m in options.markers) {
+        markersStrings
+            .add("lonlat:${m.position.longitude},${m.position.latitude}");
       }
       print(markersStrings);
       params["marker"] = markersStrings.join("|");
