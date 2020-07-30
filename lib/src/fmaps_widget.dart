@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'marker.dart';
 import 'map_options.dart';
 import 'providers/map_provider.dart';
 
@@ -15,10 +16,12 @@ class FMaps extends StatelessWidget {
 
   final MapProvider provider;
   final MapOptions options;
+  final List<Marker> markers;
 
   const FMaps({
     this.provider,
     @required this.options,
+    this.markers,
   });
 
   @override
@@ -41,7 +44,7 @@ class FMaps extends StatelessWidget {
             : _defaultHeight;
         return FadeInImage(
           placeholder: options.placeholder,
-          image: provider.getStaticMap(mapWidth, mapHeight, options),
+          image: provider.getStaticMap(mapWidth, mapHeight, options, markers),
           fit: BoxFit.fill,
         );
       },

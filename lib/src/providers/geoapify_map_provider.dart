@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../map_options.dart';
+import '../marker.dart';
 import 'map_provider.dart';
 
 /// Implementation of [MapProvider] for the Geoapify service.
@@ -8,7 +9,7 @@ class GeoapifyMapProvider extends MapProvider {
   GeoapifyMapProvider({String apiKey}) : super(apiKey: apiKey);
 
   @override
-  ImageProvider getStaticMap(int width, int height, MapOptions opt) {
+  ImageProvider getStaticMap(int width, int height, MapOptions opt, List<Marker> markers) {
     // Define the query params based on the given options
     final params = {
       "style": "osm-carto",
@@ -23,6 +24,16 @@ class GeoapifyMapProvider extends MapProvider {
     } else
       params["area"] =
           "rect:${opt.area[0].longitude},${opt.area[0].latitude},${opt.area[1].longitude},${opt.area[1].latitude}";
+
+    if (markers != null && markers.isNotEmpty) {
+      List<String> markersStrings = [];
+      for (var m in markers) {
+        markersStrings.add("lonlat:${m.position.longitude},${m.position
+            .latitude}");
+      }
+      print(markersStrings);
+      params["marker"] = markersStrings.join("|");
+    }
 
     final uri = Uri.https("maps.geoapify.com", "/v1/staticmap", params);
     print('GeoapifyMapProvider.getStaticMap: query url=$uri');
