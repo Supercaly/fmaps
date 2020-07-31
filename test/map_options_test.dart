@@ -1,10 +1,8 @@
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fmaps/fmaps.dart';
 
 void main() {
-  group("MapOptions Test", ()
-  {
+  group("MapOptions Test", () {
     test("init with center and zoom", () {
       final opt = MapOptions(
         center: LatLng(0.0, 0.0),
@@ -21,9 +19,10 @@ void main() {
     });
 
     test("init with area", () {
-      final opt = MapOptions(
-        area: [LatLng(0.0, 0.0), LatLng(0.0, 0.0),]
-      );
+      final opt = MapOptions(area: [
+        LatLng(0.0, 0.0),
+        LatLng(0.0, 0.0),
+      ]);
 
       expect(opt.area, isNotNull);
       expect(opt.area, hasLength(2));
@@ -50,9 +49,7 @@ void main() {
       }
 
       try {
-        MapOptions(
-          center: LatLng(0.0, 0.0)
-        );
+        MapOptions(center: LatLng(0.0, 0.0));
         fail("This should throw an assertion error!");
       } catch (e) {
         expect(e, isA<AssertionError>());
@@ -68,13 +65,11 @@ void main() {
       }
 
       try {
-        MapOptions(
-          area: [
-            LatLng(0.0, 0.0),
-            LatLng(0.0, 0.0),
-            LatLng(0.0, 0.0),
-          ]
-        );
+        MapOptions(area: [
+          LatLng(0.0, 0.0),
+          LatLng(0.0, 0.0),
+          LatLng(0.0, 0.0),
+        ]);
         fail("This should throw an assertion error!");
       } catch (e) {
         expect(e, isA<AssertionError>());

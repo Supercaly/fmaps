@@ -25,7 +25,8 @@ class SingleMap extends StatelessWidget {
             ],
             placeholder: NetworkImage(placeholderUrl),
           ),
-          provider: GeoapifyMapProvider(apiKey: "ef924a4dd7464d58a1f295e9e7efafbd"),
+          provider:
+              GeoapifyMapProvider(apiKey: "ef924a4dd7464d58a1f295e9e7efafbd"),
         ),
       ),
     );
