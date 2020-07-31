@@ -25,6 +25,8 @@ class FMapsProvider extends InheritedWidget {
   /// If no [MapProvider] is present null will be returned instead.
   static MapProvider of(BuildContext context) {
     assert(context != null);
-    return context.dependOnInheritedWidgetOfExactType<FMapsProvider>()?.provider;
+    return context
+        .dependOnInheritedWidgetOfExactType<FMapsProvider>()
+        ?.provider;
   }
 }

@@ -25,6 +25,7 @@ class MapOptions {
 
   /// Defines an image used as placeholder while the map
   /// is downloaded form the web.
+  // TODO: Add a default placeholder
   final ImageProvider placeholder;
 
   MapOptions({

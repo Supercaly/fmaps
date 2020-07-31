@@ -32,5 +32,7 @@ abstract class MapProvider {
   const MapProvider({this.apiKey});
 
   /// Returns an [ImageProvider] with the static map.
+  /// For ease of customizability are provided the map's [width],
+  /// [height] and [options].
   ImageProvider getStaticMap(int width, int height, MapOptions options);
 }

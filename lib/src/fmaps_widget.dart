@@ -24,6 +24,7 @@ class FMaps extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Get the MapProvider's instance
     final provider = this.provider ?? FMapsProvider.of(context);
     assert(
       provider != null,
@@ -38,7 +39,6 @@ class FMaps extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        print('FMaps.build: Parent constraints=$constraints');
         /*
          * Assign the map height and width depending on the parent's
          * constraints; if one of the constraints is Infinity, NaN

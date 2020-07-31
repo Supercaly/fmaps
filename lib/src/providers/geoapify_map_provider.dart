@@ -52,7 +52,6 @@ class GeoapifyMapProvider extends MapProvider {
       params["marker"] = _getMarkersString(options.markers);
 
     final uri = Uri.https("maps.geoapify.com", "/v1/staticmap", params);
-    print('GeoapifyMapProvider.getStaticMap: query url=$uri');
     return NetworkImage(uri.toString());
   }
 
