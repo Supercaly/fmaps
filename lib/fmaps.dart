@@ -9,3 +9,5 @@ export 'src/providers/thunderforest_map_provider.dart';
 
 export 'src/marker.dart';
 export 'src/latlng.dart';
+
+export 'src/fmaps_provider.dart';

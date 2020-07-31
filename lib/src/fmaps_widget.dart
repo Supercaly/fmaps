@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'fmaps_provider.dart';
 import 'map_options.dart';
 import 'providers/map_provider.dart';
 
@@ -23,6 +24,18 @@ class FMaps extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = this.provider ?? FMapsProvider.of(context);
+    assert(
+      provider != null,
+      '''
+      Trying to build with a null instance of MapProvider.
+      
+        This can happen if:
+        1. You didn't provide an instance of MapProvider in FMaps constructor
+        2. You didn't use FMapsProvider to provide an instance fo FMaps
+    ''',
+    );
+
     return LayoutBuilder(
       builder: (context, constraints) {
         print('FMaps.build: Parent constraints=$constraints');

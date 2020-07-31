@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../map_options.dart';
 import 'map_provider.dart';
 
+/// Implementation of [MapProvider] for the Thunderforest service.
 class ThunderforestMapProvider extends MapProvider {
   // Constant map's style Strings
   static const String cycle = "cycle";
