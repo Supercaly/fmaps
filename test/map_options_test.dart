@@ -16,6 +16,8 @@ void main() {
       expect(opt.zoom, equals(11.0));
 
       expect(opt.area, isNull);
+
+      expect(opt.placeholder, isNotNull);
     });
 
     test("init with area", () {
@@ -29,6 +31,8 @@ void main() {
 
       expect(opt.center, isNull);
       expect(opt.zoom, isNull);
+
+      expect(opt.placeholder, isNotNull);
     });
 
     test("init with null center or zoom throws exception", () {
@@ -70,6 +74,21 @@ void main() {
           LatLng(0.0, 0.0),
           LatLng(0.0, 0.0),
         ]);
+        fail("This should throw an assertion error!");
+      } catch (e) {
+        expect(e, isA<AssertionError>());
+      }
+    });
+
+    test("init with null placeholder throws exception", () {
+      try {
+        MapOptions(
+          area: [
+            LatLng(0.0, 0.0),
+            LatLng(0.0, 0.0),
+          ],
+          placeholder: null,
+        );
         fail("This should throw an assertion error!");
       } catch (e) {
         expect(e, isA<AssertionError>());
