@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fmaps/fmaps.dart';
 
 class DoubleMapWithProvider extends StatelessWidget {
-  static const String placeholderUrl =
-      "https://www.riccardogeraci.it/wp-content/uploads/2019/10/placeholder-1024x683.png";
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,24 +24,18 @@ class DoubleMapWithProvider extends StatelessWidget {
                     color: Color.fromARGB(255, 201, 178, 254),
                   ),
                 ],
-                placeholder: NetworkImage(placeholderUrl),
               ),
             ),
             FMaps(
               options: MapOptions(
-                center: LatLng(43.840964, 12.412731),
+                center: LatLng(49.67939, 27.95930),
                 zoom: 17.0,
                 markers: [
                   Marker(
-                    position: LatLng(43.840464, 12.412731),
-                    color: Colors.green,
-                  ),
-                  Marker(
-                    position: LatLng(43.840964, 12.412931),
-                    color: Color.fromARGB(255, 201, 178, 254),
+                    position: LatLng(49.67939, 27.95930),
+                    color: Colors.yellow,
                   ),
                 ],
-                placeholder: NetworkImage(placeholderUrl),
               ),
             ),
           ]),

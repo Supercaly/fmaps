@@ -1,5 +1,10 @@
 # fmaps
 
+<p align="center">
+<a href="https://github.com/Supercaly/fmaps/actions"><img src="https://github.com/Supercaly/fmaps/workflows/FMaps%20CI/badge.svg" alt="build"></a>
+<a href="https://pub.dev/packages/fmaps"><img src="https://img.shields.io/pub/v/fmaps.svg" alt="pub package"></a>
+</p>
+
 A simple Flutter Package to display maps form different providers.
 
 This package will display a static map in a widget.  
@@ -7,8 +12,20 @@ A static map is a map image that the user can't interact with, but it's
 as light weight as using a `NetworkImage` and it's really suited for a  
 use case where we need to display lots of mini maps to the user without him doing nothing.
 
-![Single Map in the screen]()
-![Multiple Maps in the screen]()
+## Examples
+<div style="text-align: center">
+    <table>
+        <tr>
+            <td style="text-align: center">
+                    <img src="./screenshots/single.jpg" width="250"/>
+            </td>
+            <td style="text-align: center">
+                    <img src="./screenshots/double.jpg" width="250"/>
+            </td>
+        </tr>
+    </table>
+</div>
+
 
 ## Usage
 To use this package add fmaps as a [dependency in your pubspec.yaml file.](https://flutter.dev/docs/development/packages-and-plugins/using-packages)
@@ -97,3 +114,45 @@ class MyMapProvider extend MapProvider {
 Sometimes the use case of our app requires the presence of multiples `FMaps` all instantiated with the same `MapProvider`.  
 In this case a top level `FMapsProvider` can be use to provide the instance of the MapProvider to all of his children  
 rather than repeating the provider in every FMaps widget.
+
+```dart
+class DoubleMapWithProvider extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: FMapsProvider(
+          provider:
+              GeoapifyMapProvider(apiKey: "ef924a4dd7464d58a1f295e9e7efafbd"),
+          child: ListView(children: [
+            FMaps(
+              options: MapOptions(
+                center: LatLng(43.840964, 12.412731),
+                zoom: 17.0,
+                markers: [
+                  Marker(
+                    position: LatLng(43.840464, 12.412731),
+                    color: Colors.green,
+                  ),
+                ],
+              ),
+            ),
+            FMaps(
+              options: MapOptions(
+                center: LatLng(43.840964, 12.412731),
+                zoom: 17.0,
+                markers: [
+                  Marker(
+                    position: LatLng(43.840964, 12.412931),
+                    color: Color.fromARGB(255, 201, 178, 254),
+                  ),
+                ],
+              ),
+            ),
+          ]),
+        ),
+      ),
+    );
+  }
+}
+```
