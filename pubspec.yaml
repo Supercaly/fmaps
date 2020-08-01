@@ -1,8 +1,9 @@
 name: fmaps
 description: A simple Flutter Package to display maps form different providers
 version: 0.0.1
-author:
-homepage:
+homepage: https://github.com/Supercaly/fmaps
+repository: https://github.com/Supercaly/fmaps
+issue_tracker: https://github.com/Supercaly/fmaps/issues
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
