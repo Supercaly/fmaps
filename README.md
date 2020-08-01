@@ -1,6 +1,6 @@
 # fmaps
 
-<p align="center">
+<p>
 <a href="https://github.com/Supercaly/fmaps/actions"><img src="https://github.com/Supercaly/fmaps/workflows/FMaps%20CI/badge.svg" alt="build"></a>
 <a href="https://pub.dev/packages/fmaps"><img src="https://img.shields.io/pub/v/fmaps.svg" alt="pub package"></a>
 </p>
