@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:fmaps/src/placeholder.dart';
 import 'fmaps_provider.dart';
 import 'map_options.dart';
 import 'providers/map_provider.dart';
@@ -10,7 +12,7 @@ import 'providers/map_provider.dart';
 /// When created this widget has the same size of
 /// his parent; if parent's width or height is Infinity,
 /// NaN of Negative it will use the default values.
-class FMaps extends StatelessWidget {
+class FMaps extends StatefulWidget {
   static const int _defaultWidth = 600;
   static const int _defaultHeight = 400;
 
@@ -23,9 +25,32 @@ class FMaps extends StatelessWidget {
   }) : assert(options != null, "The given options must not be null!");
 
   @override
+  _FMapsState createState() => _FMapsState();
+}
+
+class _FMapsState extends State<FMaps> {
+  ImageProvider _finalPlaceholder;
+
+  @override
+  void initState() {
+    super.initState();
+    // If the provided placeholder is null use the default
+    if (widget.options.placeholder == null) {
+      /*
+       *  Create the placeholder as a MemoryImage obtained
+       *  by converting a base64 string to Uint8List.
+       */
+      final placeholderUint8List =
+          Base64Decoder().convert(placeholderBase64String);
+      _finalPlaceholder = MemoryImage(placeholderUint8List);
+    } else
+      _finalPlaceholder = widget.options.placeholder;
+  }
+
+  @override
   Widget build(BuildContext context) {
     // Get the MapProvider's instance
-    final provider = this.provider ?? FMapsProvider.of(context);
+    final provider = this.widget.provider ?? FMapsProvider.of(context);
     assert(
       provider != null,
       '''
@@ -47,17 +72,17 @@ class FMaps extends StatelessWidget {
         final mapWidth =
             (constraints.maxWidth.isFinite && !constraints.maxWidth.isNegative)
                 ? constraints.maxWidth.floor()
-                : _defaultWidth;
+                : FMaps._defaultWidth;
         final mapHeight = (constraints.maxHeight.isFinite &&
                 !constraints.maxHeight.isNegative)
             ? constraints.maxHeight.floor()
-            : _defaultHeight;
+            : FMaps._defaultHeight;
         return FadeInImage(
-          placeholder: options.placeholder,
+          placeholder: _finalPlaceholder,
           image: provider.getStaticMap(
             mapWidth,
             mapHeight,
-            options,
+            widget.options,
           ),
           fit: BoxFit.fill,
         );

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'marker.dart';
 import 'latlng.dart';
 
@@ -25,7 +24,6 @@ class MapOptions {
 
   /// Defines an image used as placeholder while the map
   /// is downloaded form the web.
-  // TODO: Add a default placeholder
   final ImageProvider placeholder;
 
   MapOptions({
@@ -33,14 +31,13 @@ class MapOptions {
     this.center,
     this.zoom,
     this.markers,
-    this.placeholder = const AssetImage("assets/placeholder.png"),
+    this.placeholder,
   })  : assert(
             (center == null && zoom == null && area != null) ||
                 (center != null && zoom != null && zoom >= 1 && zoom <= 20.0),
             "When using center as map's position center and zoom must both be given. Zoom must be in range [1,20]"),
         assert(area == null || (area != null && area.length == 2),
-            "When using area as map's position area must be a size 2 list of LatLng!"),
-        assert(placeholder != null);
+            "When using area as map's position area must be a size 2 list of LatLng!");
 
   /// Returns true if the position is represented as center and zoom.
   bool get isCenter => center != null && zoom != null;

@@ -1,8 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:flutter/src/painting/image_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fmaps/fmaps.dart';
 import 'package:fmaps/src/fmaps_widget.dart';
+import 'package:fmaps/src/placeholder.dart';
 
 void main() {
   group("FMaps Test", () {
@@ -43,7 +45,7 @@ void main() {
 
       expect(
         tester.firstWidget<Image>(find.byType(Image)).image,
-        equals(AssetImage("assets/placeholder.png")),
+        isA<MemoryImage>(),
       );
     });
   });
@@ -52,6 +54,7 @@ void main() {
 class MockMapProvider extends MapProvider {
   @override
   ImageProvider getStaticMap(int width, int height, MapOptions options) {
-    return AssetImage("assets/placeholder.png");
+    final p = Base64Decoder().convert(placeholderBase64String);
+    return MemoryImage(p);
   }
 }
