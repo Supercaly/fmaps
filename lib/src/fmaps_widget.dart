@@ -20,9 +20,11 @@ class FMaps extends StatefulWidget {
   final MapOptions options;
 
   const FMaps({
+    Key key,
     this.provider,
     @required this.options,
-  }) : assert(options != null, "The given options must not be null!");
+  })  : assert(options != null, "The given options must not be null!"),
+        super(key: key);
 
   @override
   _FMapsState createState() => _FMapsState();
@@ -48,6 +50,12 @@ class _FMapsState extends State<FMaps> {
   }
 
   @override
+  void dispose() {
+    _finalPlaceholder = null;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // Get the MapProvider's instance
     final provider = this.widget.provider ?? FMapsProvider.of(context);
@@ -62,6 +70,7 @@ class _FMapsState extends State<FMaps> {
     ''',
     );
 
+    print('build fmaps');
     return LayoutBuilder(
       builder: (context, constraints) {
         /*
