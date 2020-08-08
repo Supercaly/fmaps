@@ -60,7 +60,8 @@ class GeoapifyMapProvider extends MapProvider {
   }
 
   /// Returns the string parameter for the center
-  String _getCenterString(MapLocation c) => "lonlat:${c.longitude},${c.latitude}";
+  String _getCenterString(MapLocation c) =>
+      "lonlat:${c.longitude},${c.latitude}";
 
   /// Returns the string parameter for the area
   String _getAreaString(List<MapLocation> a) =>
