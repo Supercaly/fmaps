@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'latlng.dart';
+import 'map_location.dart';
 
 /// Represent a single Marker on the map
 /// that has a specific [position] and
 /// can be customized in [color]
 class Marker {
-  /// [LatLng] position of the marker.
-  final LatLng position;
+  /// [MapLocation] position of the marker.
+  final MapLocation position;
 
   /// [Color] of the marker.
   final Color color;

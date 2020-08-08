@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../latlng.dart';
+import '../map_location.dart';
 import '../map_options.dart';
 import '../marker.dart';
 import 'map_provider.dart';
@@ -56,10 +56,10 @@ class GeoapifyMapProvider extends MapProvider {
   }
 
   /// Returns the string parameter for the center
-  String _getCenterString(LatLng c) => "lonlat:${c.longitude},${c.latitude}";
+  String _getCenterString(MapLocation c) => "lonlat:${c.longitude},${c.latitude}";
 
   /// Returns the string parameter for the area
-  String _getAreaString(List<LatLng> a) =>
+  String _getAreaString(List<MapLocation> a) =>
       "rect:${a[0].longitude},${a[0].latitude},${a[1].longitude},${a[1].latitude}";
 
   /// Returns the string parameter for all the markers

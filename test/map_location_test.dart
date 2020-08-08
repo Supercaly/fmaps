@@ -2,11 +2,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fmaps/fmaps.dart';
 
 void main() {
-  group("LatLng Test", () {
+  group("MapLocation Test", () {
     test("constructor clamps the values outside range", () {
-      final l1 = LatLng(0.0, 0.0);
-      final l2 = LatLng(-100.0, 200.0);
-      final l3 = LatLng(100.0, -200.0);
+      final l1 = MapLocation(0.0, 0.0);
+      final l2 = MapLocation(-100.0, 200.0);
+      final l3 = MapLocation(100.0, -200.0);
 
       expect(l1.latitude, equals(0.0));
       expect(l1.longitude, equals(0.0));
@@ -19,9 +19,9 @@ void main() {
     });
 
     test("equals works correctly", () {
-      final l1 = LatLng(0.0, 0.0);
-      final l2 = LatLng(3.5, 12.6);
-      final l3 = LatLng(0.0, 0.0);
+      final l1 = MapLocation(0.0, 0.0);
+      final l2 = MapLocation(3.5, 12.6);
+      final l3 = MapLocation(0.0, 0.0);
 
       expect(l1, isNot(equals(l2)));
       expect(l1, equals(l3));

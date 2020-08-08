@@ -11,15 +11,15 @@ class SingleMap extends StatelessWidget {
       body: SafeArea(
         child: FMaps(
           options: MapOptions(
-            center: LatLng(43.840964, 12.412731),
+            center: MapLocation(43.840964, 12.412731),
             zoom: 17.0,
             markers: [
               Marker(
-                position: LatLng(43.840464, 12.412731),
+                position: MapLocation(43.840464, 12.412731),
                 color: Colors.green,
               ),
               Marker(
-                position: LatLng(43.840964, 12.412931),
+                position: MapLocation(43.840964, 12.412931),
                 color: Color.fromARGB(255, 201, 178, 254),
               ),
             ],

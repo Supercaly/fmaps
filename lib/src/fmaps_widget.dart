@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:fmaps/src/placeholder.dart';
+import 'placeholder.dart';
 import 'fmaps_provider.dart';
 import 'map_options.dart';
 import 'providers/map_provider.dart';

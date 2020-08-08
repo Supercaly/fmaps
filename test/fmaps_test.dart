@@ -25,7 +25,7 @@ void main() {
         (tester) async {
       await tester.pumpWidget(FMaps(
         options: MapOptions(
-          center: LatLng(0.0, 0.0),
+          center: MapLocation(0.0, 0.0),
           zoom: 19.0,
         ),
       ));
@@ -35,7 +35,7 @@ void main() {
     testWidgets("create FMaps show the map correctly", (tester) async {
       await tester.pumpWidget(FMaps(
         options: MapOptions(
-          center: LatLng(0.0, 0.0),
+          center: MapLocation(0.0, 0.0),
           zoom: 19.0,
         ),
         provider: MockMapProvider(),

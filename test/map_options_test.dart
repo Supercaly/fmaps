@@ -5,12 +5,12 @@ void main() {
   group("MapOptions Test", () {
     test("init with center and zoom", () {
       final opt = MapOptions(
-        center: LatLng(0.0, 0.0),
+        center: MapLocation(0.0, 0.0),
         zoom: 11.0,
       );
 
       expect(opt.center, isNotNull);
-      expect(opt.center, equals(LatLng(0.0, 0.0)));
+      expect(opt.center, equals(MapLocation(0.0, 0.0)));
 
       expect(opt.zoom, isNotNull);
       expect(opt.zoom, equals(11.0));
@@ -22,8 +22,8 @@ void main() {
 
     test("init with area", () {
       final opt = MapOptions(area: [
-        LatLng(0.0, 0.0),
-        LatLng(0.0, 0.0),
+        MapLocation(0.0, 0.0),
+        MapLocation(0.0, 0.0),
       ]);
 
       expect(opt.area, isNotNull);
@@ -53,7 +53,7 @@ void main() {
       }
 
       try {
-        MapOptions(center: LatLng(0.0, 0.0));
+        MapOptions(center: MapLocation(0.0, 0.0));
         fail("This should throw an assertion error!");
       } catch (e) {
         expect(e, isA<AssertionError>());
@@ -70,9 +70,9 @@ void main() {
 
       try {
         MapOptions(area: [
-          LatLng(0.0, 0.0),
-          LatLng(0.0, 0.0),
-          LatLng(0.0, 0.0),
+          MapLocation(0.0, 0.0),
+          MapLocation(0.0, 0.0),
+          MapLocation(0.0, 0.0),
         ]);
         fail("This should throw an assertion error!");
       } catch (e) {

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'marker.dart';
-import 'latlng.dart';
+import 'map_location.dart';
 
 /// Represent a set of options used to
 /// customize a specific map.
 class MapOptions {
-  /// A pair of [LatLng] object defining the rectangular
+  /// A pair of [MapLocation] object defining the rectangular
   /// bounding box of the map.
-  final List<LatLng> area;
+  final List<MapLocation> area;
 
-  /// A [LatLng] object defining the center of the map.
+  /// A [MapLocation] object defining the center of the map.
   ///
   /// This option must be used in conjunction with [zoom].
-  final LatLng center;
+  final MapLocation center;
 
   /// Value of the map's zoom; used only with [center].
   ///
