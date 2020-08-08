@@ -39,11 +39,11 @@ class MapWidget extends StatelessWidget {
     return Scaffold(
       body: FMaps(
           options: MapOptions(
-            center: LatLng(0.0, 0.0),
+            center: MapLocation(0.0, 0.0),
             zoom: 17.0,
             markers: [
               Marker(
-                position: LatLng(0.0, 0.0),
+                position: MapLocation(0.0, 0.0),
               ),
             ],
           ),
@@ -77,7 +77,7 @@ in the option can be specified a list of markers each one with a `position` and 
 
 ```dart
 Marker m = Marker(
-  position: LatLng(0.0, 0.0),
+  position: MapLocation(0.0, 0.0),
   color: Colors.red,
 );  
 ```
@@ -127,11 +127,11 @@ class DoubleMapWithProvider extends StatelessWidget {
           child: ListView(children: [
             FMaps(
               options: MapOptions(
-                center: LatLng(43.840964, 12.412731),
+                center: MapLocation(43.840964, 12.412731),
                 zoom: 17.0,
                 markers: [
                   Marker(
-                    position: LatLng(43.840464, 12.412731),
+                    position: MapLocation(43.840464, 12.412731),
                     color: Colors.green,
                   ),
                 ],
@@ -139,11 +139,11 @@ class DoubleMapWithProvider extends StatelessWidget {
             ),
             FMaps(
               options: MapOptions(
-                center: LatLng(43.840964, 12.412731),
+                center: MapLocation(43.840964, 12.412731),
                 zoom: 17.0,
                 markers: [
                   Marker(
-                    position: LatLng(43.840964, 12.412931),
+                    position: MapLocation(43.840964, 12.412931),
                     color: Color.fromARGB(255, 201, 178, 254),
                   ),
                 ],
