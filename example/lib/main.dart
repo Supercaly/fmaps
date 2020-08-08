@@ -1,5 +1,6 @@
 import 'package:example/double_map.dart';
 import 'package:example/double_map_with_provider.dart';
+import 'package:example/map_with_keys.dart';
 import 'package:example/single_map.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         "/single_map": (_) => SingleMap(),
         "/double_map": (_) => DoubleMap(),
         "/double_map_prov": (_) => DoubleMapWithProvider(),
+        "/map_keys_prov": (_) => MapWithKeys(),
       },
     );
   }
@@ -60,6 +62,15 @@ class HomePage extends StatelessWidget {
               onTap: () => Navigator.pushNamed(context, "/double_map_prov"),
               child: Padding(
                 child: Text("Double Map with common Provider"),
+                padding: EdgeInsets.all(16.0),
+              ),
+            ),
+          ),
+          Card(
+            child: InkWell(
+              onTap: () => Navigator.pushNamed(context, "/map_keys_prov"),
+              child: Padding(
+                child: Text("Single Map and ann updating counter"),
                 padding: EdgeInsets.all(16.0),
               ),
             ),
