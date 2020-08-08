@@ -18,6 +18,10 @@ class ThunderforestMapProvider extends MapProvider {
   /// [String] representing the style of the map
   final String style;
 
+  /// Creates a [ThunderforestMapProvider] with given
+  /// [apiKey] and [style].
+  /// style is one of the constant String values of
+  /// [ThunderforestMapProvider].
   ThunderforestMapProvider({
     String apiKey,
     this.style = outdoors,

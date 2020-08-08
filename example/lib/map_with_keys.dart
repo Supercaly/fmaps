@@ -17,7 +17,6 @@ class _MapWithKeysState extends State<MapWithKeys> {
 
   @override
   Widget build(BuildContext context) {
-    print('build ');
     return Scaffold(
       body: SafeArea(
         child: Column(

@@ -12,6 +12,8 @@ class Marker {
   /// [Color] of the marker.
   final Color color;
 
+  /// Creates a [Marker] with given [position]
+  /// and [color]
   Marker({
     this.position,
     this.color,

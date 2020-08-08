@@ -25,6 +25,10 @@ class GeoapifyMapProvider extends MapProvider {
   /// [String] representing the style of the map
   final String style;
 
+  /// Creates a [GeoapifyMapProvider] with given
+  /// [apiKey] and [style].
+  /// style is one of the constant String values
+  /// of [GeoapifyMapProvider].
   GeoapifyMapProvider({
     String apiKey,
     this.style = osm_carto,

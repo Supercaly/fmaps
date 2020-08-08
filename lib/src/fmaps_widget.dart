@@ -19,6 +19,9 @@ class FMaps extends StatefulWidget {
   final MapProvider provider;
   final MapOptions options;
 
+  /// Creates an [FMaps] with given [key],
+  /// [provider] and [options].
+  /// [options] can't be null.
   const FMaps({
     Key key,
     this.provider,
@@ -30,6 +33,7 @@ class FMaps extends StatefulWidget {
   _FMapsState createState() => _FMapsState();
 }
 
+/// State of [FMaps] widget
 class _FMapsState extends State<FMaps> {
   ImageProvider _finalPlaceholder;
 
@@ -70,7 +74,6 @@ class _FMapsState extends State<FMaps> {
     ''',
     );
 
-    print('build fmaps');
     return LayoutBuilder(
       builder: (context, constraints) {
         /*

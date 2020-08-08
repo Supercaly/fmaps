@@ -26,6 +26,8 @@ class MapOptions {
   /// is downloaded form the web.
   final ImageProvider placeholder;
 
+  /// Creates a [MapOptions] with given [area], [center],
+  /// [zoom], [markers] and [placeholder]
   MapOptions({
     this.area,
     this.center,

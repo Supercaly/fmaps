@@ -9,6 +9,8 @@ class FMapsProvider extends InheritedWidget {
   /// Instance of [MapProvider] to provide to the children.
   final MapProvider provider;
 
+  /// Creates an [FMapsProvider] with given [key],
+  /// [provider] and [child]
   const FMapsProvider({
     Key key,
     @required this.provider,

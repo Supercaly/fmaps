@@ -29,6 +29,7 @@ abstract class MapProvider {
   /// A String with the api key.
   final String apiKey;
 
+  /// Creates a [MapProvider] with given [apiKey]
   const MapProvider({this.apiKey});
 
   /// Returns an [ImageProvider] with the static map.
